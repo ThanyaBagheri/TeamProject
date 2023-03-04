@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
@@ -7,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
+=======
         <module name="TeamProject" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="TeamProject" />
+>>>>>>> b6d4687fbec076351552b31981a1ea797fa99aee
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -33,4 +35,3 @@
     </bytecodeTargetLevel>
   </component>
 </project>
->>>>>>> a3650e524bafe2df14df904e17aa0d40854d05e2
