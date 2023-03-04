@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
@@ -6,3 +7,14 @@
     </modules>
   </component>
 </project>
+||||||| 651b676
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/TeamProject.iml" filepath="$PROJECT_DIR$/.idea/TeamProject.iml" />
+    </modules>
+  </component>
+</project>
+>>>>>>> a3650e524bafe2df14df904e17aa0d40854d05e2
