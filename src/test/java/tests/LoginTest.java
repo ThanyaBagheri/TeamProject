@@ -7,8 +7,9 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.LoginPage;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
     LoginPage page;
+
     @BeforeMethod
     public void setUp() {
 
@@ -17,12 +18,12 @@ public class LoginTest extends BaseTest{
 
     @Test(testName = "US302", description = "locked out user attempt")
     public void test302() {
-    driver.findElement(By.id("user-name")).sendKeys("locked_out_user");
-    driver.findElement(By.id("password")).sendKeys("secret_sauce");
-    driver.findElement(By.id("login-button")).click();
+        page.sendKeys(page.usernameInput, "locked_out_user");
+        page.sendKeys(page.passwordInput, "secret_sauce");
+        page.click(page.loginBtn);
 
-        Assert.assertEquals(driver.findElement(By.xpath("//h3")).getText(),
-                "Epic sadface: Sorry, this user has been locked out.");
+        String errorTxt = "Epic sadface: Sorry, this user has been locked out.";
+        page.assertEquals(page.errorMsg.getText(), errorTxt);
 
     }
 }
