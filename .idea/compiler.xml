@@ -6,32 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-<<<<<<< HEAD
-=======
-        <module name="TeamProject" />
+        <module name="TeamProject2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TeamProject" target="18" />
-    </bytecodeTargetLevel>
-  </component>
-</project>
-||||||| 651b676
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="TeamProject" />
->>>>>>> b6d4687fbec076351552b31981a1ea797fa99aee
-      </profile>
-    </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TeamProject" target="18" />
+      <module name="TeamProject2" target="18" />
     </bytecodeTargetLevel>
   </component>
 </project>
