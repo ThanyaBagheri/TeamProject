@@ -8,35 +8,35 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.HomePage;
+import pages.LoginPage;
+import utils.BrowserUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HomeTest extends BaseTest {
-
     HomePage page;
-    BasePage basePage;
-
+    LoginPage loginPage;
     @BeforeMethod
     public void setUp() {
+        loginPage = new LoginPage(driver);
         page = new HomePage(driver);
     }
-
     @DataProvider(name = "followingbtns")
     public Object[] testData() {
         Object[] data = {"All Items", "About", "Logout", "Reset App State"};
         return data;
     }
 
-    @Test(dataProvider = "followingbtns", testName = "I need an option to see navigation menu. When user clicks the button it should display following buttons")
-    public void test01(String expected) {
+    @Test(dataProvider = "followingbtns",testName = "US 304 - I need an option to see navigation menu. When user clicks the button it should display following buttons")
+    public void test304(String expected){
         // login
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).click();
-
+        loginPage.login();
         // nav-menu
-        page.navMenuBtn.click();
+        page.click(page.navMenuBtn);
+        //sleep method to avoid expection
+        BrowserUtils.sleep(1000L);
 
         boolean check = false;
         for (int i = 0; i < page.followingBtns.size(); i++) {
@@ -47,16 +47,11 @@ public class HomeTest extends BaseTest {
             }
         }
         Assert.assertEquals(check, true);
-
-
     }
-
-
     @Test(testName = "US305", description = "verifying Footer of the page ")
     public void test305() {
-        page.sendKeys(page.usernameInput, "standard_user");
-        page.sendKeys(page.passwordInput, "secret_sauce");
-        page.click(page.loginBtn);
+        //login
+        loginPage.login();
         String footer = "© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy";
 
         Assert.assertEquals(driver.findElement(By.xpath("//div[@class='footer_copy']")).getText(), footer);
@@ -66,10 +61,8 @@ public class HomeTest extends BaseTest {
 
     @Test(testName = "US306", description = "filter options")
     public void test306() {
-
-        page.sendKeys(page.usernameInput, "standard_user");
-        page.sendKeys(page.passwordInput, "secret_sauce");
-        page.click(page.loginBtn);
+        //login
+        loginPage.login();
 
         List<WebElement> options = page.filterOptions;
         List<String> expectedOptions = new ArrayList<>();
@@ -102,4 +95,25 @@ public class HomeTest extends BaseTest {
 
         }
     }
-}
+
+    @DataProvider(name = "socialMed")
+    public Object[] socialMed() {
+        Object[] social = {"Sauce Labs (@saucelabs) / Twitter","Sauce Labs | Facebook","Sauce Labs | LinkedIn"};
+        return social;
+    }
+    @Test(testName = "US307 - Social media buttons.", dataProvider = "socialMed",description = "Verify there are 3 social media buttons are present: twitter, facebook and linkedIn")
+    public void test307(String social){
+        //login
+        loginPage.login();
+        //verify 3 social media buttons
+        boolean check = false;
+        for (WebElement each : page.socialMedBtns){
+            page.click(each);
+        }
+        BrowserUtils.switchToNewWindow(driver, social);
+
+        if (driver.getTitle().contains(social))
+            check = true;
+        Assert.assertEquals(check, true);
+    }
+ }
