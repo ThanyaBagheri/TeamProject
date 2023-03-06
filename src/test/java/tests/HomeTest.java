@@ -7,12 +7,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.HomePage;
+import pages.LoginPage;
 
 public class HomeTest extends BaseTest{
     HomePage page;
-    BasePage basePage;
+    LoginPage loginPage;
     @BeforeMethod
     public void setUp() {
+        loginPage = new LoginPage(driver);
         page = new HomePage(driver);
     }
     @DataProvider(name = "followingbtns")
@@ -22,15 +24,11 @@ public class HomeTest extends BaseTest{
     }
 
     @Test(dataProvider = "followingbtns",testName = "I need an option to see navigation menu. When user clicks the button it should display following buttons")
-    public void test01(String expected){
+    public void test304(String expected){
     // login
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).click();
-
+        loginPage.login();
         // nav-menu
         page.navMenuBtn.click();
-
         boolean check = false;
         for (int i = 0; i < page.followingBtns.size(); i++) {
             String actual = page.followingBtns.get(i).getText();
