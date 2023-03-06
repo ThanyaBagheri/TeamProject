@@ -10,14 +10,6 @@ public class CartPage extends BasePage{
         super(driver);
         PageFactory.initElements(driver, this);
     }
-    @FindBy(id = "user-name")
-    public WebElement usernameInput;
-
-    @FindBy(id = "password")
-    public WebElement passwordInput;
-
-    @FindBy(id = "login-button")
-    public WebElement loginBtn;
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
     public WebElement addToCartBtn;
 
@@ -29,5 +21,16 @@ public class CartPage extends BasePage{
 
     @FindBy(id = "remove-sauce-labs-backpack")
     public WebElement removeFromCartBtn;
+    @FindBy(id = "checkout")
+    public WebElement checkoutBtn;
+
+    @FindBy(id = "first-name")
+    public WebElement firstNameField;
+
+    @FindBy(id = "last-name")
+    public WebElement lastNameField;
+
+    @FindBy(id = "postal-code")
+    public WebElement postalCodeField;
 
 }

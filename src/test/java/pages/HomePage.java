@@ -29,5 +29,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//*[@class='product_sort_container']")
     public List<WebElement> filterOptions;
 
+    @FindBy(xpath = "//ul//li")
+    public List<WebElement> socialMedBtns;
 
 }

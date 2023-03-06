@@ -23,9 +23,14 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//h3")
     public WebElement errorMsg;
 
+//    public void login(){
+//        usernameInput.sendKeys("standard_user");
+//        passwordInput.sendKeys("secret_sauce");
+//        loginBtn.click();
+//    }
     public void login(){
-        usernameInput.sendKeys("standard_user");
-        passwordInput.sendKeys("secret_sauce");
-        loginBtn.click();
+        sendKeys(usernameInput,"standard_user");
+        sendKeys(passwordInput,"secret_sauce");
+        click(loginBtn);
     }
 }
