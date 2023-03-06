@@ -86,7 +86,7 @@ public class ExtentManager {
     }
 
     public void logScreenshot() {
-        if (ConfigReader.readProperty("configuration.properties", "takeScreenshots").equalsIgnoreCase("true"))
+        if (ConfigReader.readProperty("config.properties", "takeScreenshots").equalsIgnoreCase("true"))
             extentTest.info(MediaEntityBuilder.createScreenCaptureFromBase64String(Screenshot.takeScreenshot(driver)).build());
     }
 
