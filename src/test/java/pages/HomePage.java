@@ -17,5 +17,17 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//nav[@class='bm-item-list']/a")
     public List<WebElement> followingBtns;
 
+    @FindBy(id = "user-name")
+    public WebElement usernameInput;
+
+    @FindBy(id = "password")
+    public WebElement passwordInput;
+
+    @FindBy(id = "login-button")
+    public WebElement loginBtn;
+
+    @FindBy(xpath = "//*[@class='product_sort_container']")
+    public List<WebElement> filterOptions;
+
 
 }
