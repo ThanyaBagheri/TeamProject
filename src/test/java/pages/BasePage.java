@@ -23,7 +23,7 @@ public class BasePage extends BaseTest {
                 if (i % 2 == 0) {
                     js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "color: black;" +
                             "border: 3px solid red; background: yellow");
-                    if (ConfigReader.readProperty("configuration.properties", "takeScreenshots").equalsIgnoreCase("true"))
+                    if (ConfigReader.readProperty("config.properties", "takeScreenshots").equalsIgnoreCase("true"))
                         BaseTest.reportManager.logScreenshot();
                 } else {
                     sleep(600);
