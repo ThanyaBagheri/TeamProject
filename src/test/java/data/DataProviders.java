@@ -14,4 +14,9 @@ public class DataProviders {
         Object[] social = {"Sauce Labs (@saucelabs) / Twitter","Sauce Labs | Facebook","Sauce Labs | LinkedIn"};
         return social;
     }
+    @DataProvider(name = "socialMed names")
+    public Object[] socialMedNames() {
+        Object[] social = {"twitter", "facebook", "linkedin"};
+        return social;
+    }
 }

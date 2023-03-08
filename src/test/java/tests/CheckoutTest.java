@@ -1,14 +1,13 @@
 package tests;
 
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.CheckoutPage;
 import pages.LoginPage;
-
 import java.util.List;
 
 public class CheckoutTest extends BaseTest{
@@ -33,6 +32,24 @@ public class CheckoutTest extends BaseTest{
             Assert.assertEquals(page.getText(page.checkoutInfo), errorTxt);
         }
 
+    }
+
+    @Test(testName = "US 313 -Checkout Overview - Price Total\n")
+    public void test313(){
+        // login
+        loginPage.login();
+        // add to cart
+        page.addToCartAllItems();
+        //switch to cart page
+        page.click(page.shoppingCartBtn);
+        //fill checkout form and click continue
+        page.fillCheckoutForm();
+        //verify
+        double item = page.getSumFromString(page.itemTotal);
+        double tax = page.getSumFromString(page.tax);
+        double total = page.getSumFromString(page.total);
+
+        Assert.assertEquals(total, item + tax);
     }
 
     @Test(testName = "US 312 - Checkout Overview Info", description = "When user enters checkout information, verify headers: Payment information, Shipping information and Price Total are displayed")
@@ -64,6 +81,22 @@ public class CheckoutTest extends BaseTest{
 
         Assert.assertTrue(page.productTxt.isDisplayed());
 
+    }
+    @Test(testName = "US 316- Checkout: Complete - Back Home Button")
+    public void test316(){
+        // login
+        loginPage.login();
+        // add to cart
+        page.addToCartAllItems();
+        //switch to cart page
+        page.click(page.shoppingCartBtn);
+        //fill checkout form and click continue
+        page.fillCheckoutForm();
+
+        page.click(page.finishBtn);
+        page.click(page.backHomeBtn);
+
+        Assert.assertTrue(page.verifyProducts.isDisplayed());
     }
 }
 

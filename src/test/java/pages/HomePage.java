@@ -31,5 +31,7 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//ul//li")
     public List<WebElement> socialMedBtns;
+    @FindBy(id = "about_sidebar_link")
+    public WebElement aboutBtn;
 
 }
