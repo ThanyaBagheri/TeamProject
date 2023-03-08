@@ -1,5 +1,6 @@
 package tests;
 
+import data.DataProviders;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -23,13 +24,9 @@ public class HomeTest extends BaseTest {
         loginPage = new LoginPage(driver);
         page = new HomePage(driver);
     }
-    @DataProvider(name = "followingbtns")
-    public Object[] testData() {
-        Object[] data = {"All Items", "About", "Logout", "Reset App State"};
-        return data;
-    }
 
-    @Test(dataProvider = "followingbtns",testName = "US 304 - I need an option to see navigation menu. When user clicks the button it should display following buttons")
+    @Test(dataProvider = "followingbtns", dataProviderClass = DataProviders.class
+            , testName = "US 304 - I need an option to see navigation menu. When user clicks the button it should display following buttons")
     public void test304(String expected){
         // login
         loginPage.login();
@@ -96,12 +93,8 @@ public class HomeTest extends BaseTest {
         }
     }
 
-    @DataProvider(name = "socialMed")
-    public Object[] socialMed() {
-        Object[] social = {"Sauce Labs (@saucelabs) / Twitter","Sauce Labs | Facebook","Sauce Labs | LinkedIn"};
-        return social;
-    }
-    @Test(testName = "US307 - Social media buttons.", dataProvider = "socialMed",description = "Verify there are 3 social media buttons are present: twitter, facebook and linkedIn")
+    @Test(testName = "US307 - Social media buttons.",description = "Verify there are 3 social media buttons are present: twitter, facebook and linkedIn"
+            , dataProvider = "socialMed", dataProviderClass = DataProviders.class)
     public void test307(String social){
         //login
         loginPage.login();
