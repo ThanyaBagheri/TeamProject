@@ -10,9 +10,17 @@ public class CheckoutPage extends BasePage{
         super(driver);
         PageFactory.initElements(driver, this);
     }
+    @FindBy(className = "shopping_cart_link")
+    public WebElement cartBtn;
 
     @FindBy(id = "checkout")
     public WebElement checkoutBtn;
+
+    @FindBy(id = "continue")
+    public WebElement continueBtn;
+
+    @FindBy(xpath = "//h3")
+    public WebElement checkoutInfo;
 
     @FindBy(id = "first-name")
     public WebElement firstNameFill;
@@ -22,9 +30,6 @@ public class CheckoutPage extends BasePage{
 
     @FindBy(id = "postal-code")
     public WebElement zipCodeFill;
-
-    @FindBy(id = "continue")
-    public WebElement continueBtn;
 
     @FindBy(xpath = "//div[normalize-space()='Payment Information']")
     public WebElement paymentInfo;
