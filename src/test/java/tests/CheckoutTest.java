@@ -19,6 +19,7 @@ public class CheckoutTest extends BaseTest{
     public void setUp() {
         page = new CheckoutPage(driver);
         loginPage = new LoginPage(driver);
+        cartPage = new CartPage(driver);
     }
     @Test(testName = "US311", description = "Checkout: Your information Error Message")
     public void test311() {
@@ -36,18 +37,22 @@ public class CheckoutTest extends BaseTest{
 
     @Test(testName = "US 312 - Checkout Overview Info", description = "When user enters checkout information, verify headers: Payment information, Shipping information and Price Total are displayed")
     public void test312(){
-        loginPage.login();
-        cartPage.cartBtn.click();
-        page.checkoutBtn.click();
-
-        page.firstNameFill.sendKeys("JohnDoe");
-        page.lastNameFill.sendKeys("Doe");
-        page.zipCodeFill.sendKeys("22192");
-
-        page.continueBtn.click();
+        page.gotoCheckout(loginPage);
+        page.enterCheckoutInfo();
 
         Assert.assertTrue(page.paymentInfo.isDisplayed());
         Assert.assertTrue(page.shippingInfo.isDisplayed());
-        Assert.assertTrue(page.paymentInfo.isDisplayed());
+        Assert.assertTrue(page.priceTotal.isDisplayed());
+    }
+
+    @Test(testName = "US 315 - Checkout:Complete - Confirmation", description = "When user clicks finish, the user should see a confirmation message, “Thank you for your order!”")
+    public void test315() {
+        page.gotoCheckout(loginPage);
+        page.enterCheckoutInfo();
+        page.click(page.finishBtn);
+
+        String expectedMsg = "Thank you for your order!";
+        page.assertEquals(page.confirmationMsg.getText() ,expectedMsg);
     }
 }
+
