@@ -23,6 +23,12 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//h3")
     public WebElement errorMsg;
 
+    @FindBy(id = "logout_sidebar_link")
+    public WebElement logOutMsg;
+
+    @FindBy(id = "react-burger-menu-btn")
+    public WebElement openMenu;
+
 //    public void login(){
 //        usernameInput.sendKeys("standard_user");
 //        passwordInput.sendKeys("secret_sauce");
