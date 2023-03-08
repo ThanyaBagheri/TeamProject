@@ -40,9 +40,5 @@ public class AboutTest extends BaseTest{
             }
         }
         Assert.assertEquals(check, true);
-
-
-
-
     }
 }
