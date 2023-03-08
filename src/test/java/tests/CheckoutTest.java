@@ -54,5 +54,16 @@ public class CheckoutTest extends BaseTest{
         String expectedMsg = "Thank you for your order!";
         page.assertEquals(page.confirmationMsg.getText() ,expectedMsg);
     }
+    @Test(testName = "US314", description = "Checkout Overview - option to cancel")
+    public void test314() {
+        loginPage.login();
+        page.click(page.cartBtn);
+        page.click(page.checkoutBtn);
+        page.enterCheckoutInfo();
+        page.click(page.cancelBtn);
+
+        Assert.assertTrue(page.productTxt.isDisplayed());
+
+    }
 }
 

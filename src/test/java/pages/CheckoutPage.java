@@ -46,6 +46,12 @@ public class CheckoutPage extends BasePage{
     @FindBy(className = "complete-header")
     public WebElement confirmationMsg;
 
+    @FindBy(id = "cancel")
+    public WebElement cancelBtn;
+
+    @FindBy(className = "title")
+    public WebElement productTxt;
+
     public void gotoCheckout(LoginPage loginPage){
         loginPage.login();
         click(cartBtn);
