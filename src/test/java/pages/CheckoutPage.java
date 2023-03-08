@@ -39,4 +39,24 @@ public class CheckoutPage extends BasePage{
 
     @FindBy(xpath = "//div[normalize-space()='Price Total']")
     public WebElement priceTotal;
+
+    @FindBy(id = "finish")
+    public WebElement finishBtn;
+
+    @FindBy(className = "complete-header")
+    public WebElement confirmationMsg;
+
+    public void gotoCheckout(LoginPage loginPage){
+        loginPage.login();
+        click(cartBtn);
+        click(checkoutBtn);
+    }
+
+    public void enterCheckoutInfo(){
+        sendKeys(firstNameFill,"JohnDoe");
+        sendKeys(lastNameFill,"Doe");
+        sendKeys(zipCodeFill,"22192");
+
+        click(continueBtn);
+    }
 }
