@@ -21,4 +21,22 @@ public class CheckoutPage extends BasePage{
 
     @FindBy(xpath = "//h3")
     public WebElement checkoutInfo;
+
+    @FindBy(id = "first-name")
+    public WebElement firstNameFill;
+
+    @FindBy(id = "last-name")
+    public WebElement lastNameFill;
+
+    @FindBy(id = "postal-code")
+    public WebElement zipCodeFill;
+
+    @FindBy(xpath = "//div[normalize-space()='Payment Information']")
+    public WebElement paymentInfo;
+
+    @FindBy(xpath = "//div[normalize-space()='Shipping Information']")
+    public WebElement shippingInfo;
+
+    @FindBy(xpath = "//div[normalize-space()='Price Total']")
+    public WebElement priceTotal;
 }
