@@ -1,6 +1,7 @@
 package tests;
 
 import data.DataProviders;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -28,10 +29,10 @@ public class AboutTest extends BaseTest{
     public void test319(String social){
         //login
         loginPage.login();
-        // verify buttons
+        // open about page
         homePage.click(homePage.navMenuBtn);
         homePage.click(homePage.aboutBtn);
-
+        // verify
         boolean check = false;
         for (WebElement each : page.socialMedBtns){
             if(each.getAttribute("href").contains(social)){
@@ -40,5 +41,19 @@ public class AboutTest extends BaseTest{
             }
         }
         Assert.assertEquals(check, true);
+    }
+    @Test(testName = "US 320 - About Page: Navigation Menu")
+    public void test320(){
+        //login
+        loginPage.login();
+        // open about page
+        homePage.click(homePage.navMenuBtn);
+        homePage.click(homePage.aboutBtn);
+        //verify
+        List<String> navBtns = Arrays.asList("Products", "Pricing", "Developers", "Enterprise","Resources");
+        for (String each : navBtns){
+            Assert.assertTrue(driver.findElement(By.xpath("//header//span[text()='"+ each + "']")).isEnabled());
+        }
+        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Sign in']")).isEnabled());
     }
 }
